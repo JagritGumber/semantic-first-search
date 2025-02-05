@@ -1,0 +1,23 @@
+{
+  "name": "authentication",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "migrations:list": "wrangler d1 migrations list semantic-first-search-db",
+    "migrations:apply": "wrangler d1 migrations apply semantic-first-search-db",
+    "migrations:apply:remote": "wrangler d1 migrations apply semantic-first-search-db --remote"
+  },
+  "dependencies": {
+    "@auth/core": "^0.37.4",
+    "@auth/drizzle-adapter": "^1.7.4",
+    "@hono/auth-js": "^1.0.15",
+    "drizzle-orm": "^0.39.1",
+    "hono": "^4.6.20"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250129.0",
+    "drizzle-kit": "^0.30.4",
+    "wrangler": "^3.107.3"
+  }
+}
