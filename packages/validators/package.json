@@ -1,0 +1,23 @@
+{
+  "name": "@sfs/validators",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "exports": {
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    },
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "@sfs/tsconfig": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

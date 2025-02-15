@@ -1,0 +1,50 @@
+{
+  "name": "@sfs/types",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "exports": {
+    "./secrets": {
+      "types": "./src/secrets/index.ts",
+      "default": "./dist/secrets/index.js"
+    },
+    "./secrets/*": {
+      "types": "./src/secrets/*.ts",
+      "default": "./dist/secrets/*.js"
+    },
+    "./core": {
+      "types": "./src/core/index.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./core/*": {
+      "types": "./src/core/*.ts",
+      "default": "./dist/core/*.js"
+    },
+    "./auth": {
+      "types": "./src/auth/index.ts",
+      "default": "./dist/auth/index.js"
+    },
+    "./auth/*": {
+      "types": "./src/auth/*.ts",
+      "default": "./dist/auth/*.js"
+    },
+    "./db": {
+      "types": "./src/db/index.ts",
+      "default": "./dist/db/index.js"
+    },
+    "./db/*": {
+      "types": "./src/db/*.ts",
+      "default": "./dist/db/*.js"
+    }
+  },
+  "dependencies": {
+    "@sfs/db": "workspace:*"
+  },
+  "devDependencies": {
+    "@sfs/tsconfig": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

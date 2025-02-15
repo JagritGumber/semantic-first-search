@@ -1,0 +1,42 @@
+{
+  "name": "semantic-first-search",
+  "version": "0.0.1",
+  "private": false,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:auth": "bun run --cwd apps/auth dev",
+    "dev:secrets": "bun run --cwd apps/secrets dev",
+    "dev:client": "bun run --cwd apps/client preview",
+    "build:db": "bun run --cwd packages/db build",
+    "build:types": "bun run --cwd packages/types build",
+    "build:secrets": "bun run --cwd packages/secrets build",
+    "build:auth": "bun run --cwd packages/auth build",
+    "build:errors": "bun run --cwd packages/errors build",
+    "build:utils": "bun run --cwd packages/utils build",
+    "build:validators": "bun run --cwd packages/validators build",
+    "build:all": "bun run build:secrets && bun run build:types && bun run build:db && bun run build:errors && bun run build:auth && bun run build:utils && bun run build:validators",
+    "cf-typegen": "bun run --cwd apps/auth cf-typegen && bun run --cwd apps/secrets cf-typegen && bun run --cwd apps/mail cf-typegen",
+    "migrations:list": "bun run --cwd packages/db migrations:list",
+    "migrations:apply": "bun run --cwd packages/db migrations:apply",
+    "migrations:apply:remote": "bun run --cwd packages/db migrations:apply:remote",
+    "drizzle:generate": "bun run --cwd packages/db drizzle-kit generate",
+    "drizzle:drop": "bun run --cwd packages/db drizzle-kit drop"
+  },
+  "dependencies": {
+    "@cloudflare/vite-plugin": "^0.1.1",
+    "@hono/zod-validator": "^0.4.2",
+    "bun": "^1.2.2",
+    "drizzle-orm": "^0.39.2",
+    "hono": "^4.7.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4",
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "wrangler": "^3.109.1",
+    "typescript": "^5.7.3"
+  }
+}

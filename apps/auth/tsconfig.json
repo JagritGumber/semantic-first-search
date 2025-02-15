@@ -1,0 +1,11 @@
+{
+  "extends": "@sfs/tsconfig/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["./**/*.ts", "./src/types/**/*.d.ts"]
+}

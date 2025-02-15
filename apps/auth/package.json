@@ -1,0 +1,21 @@
+{
+  "name": "@sfs/auth-app",
+  "scripts": {
+    "dev": "wrangler dev --port 5050 --persist-to=../../.wrangler/state",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types ../../packages/auth/worker-configuration.d.ts --env-interface CloudflareBindings && wrangler types --env-interface CloudflareBindings",
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "zod": "^3.24.1",
+    "hono": "^4.7.0",
+    "@hono/zod-validator": "^0.4.2",
+    "drizzle-orm": "^0.39.2",
+    "@sfs/clients": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "drizzle-kit": "*",
+    "wrangler": "^3.107.3"
+  }
+}

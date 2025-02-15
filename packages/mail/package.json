@@ -1,0 +1,28 @@
+{
+  "name": "@sfs/mail",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "dependencies": {
+    "hono": "^4.6.20",
+    "zod": "^3.24.1",
+    "@hono/zod-validator": "^0.4.2"
+  },
+  "devDependencies": {
+    "@sfs/tsconfig": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

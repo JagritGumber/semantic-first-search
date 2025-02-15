@@ -1,0 +1,29 @@
+{
+  "name": "@sfs/clients",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "hono": "^4.7.0",
+    "@sfs/types": "workspace:*",
+    "@sfs/validators": "workspace:*",
+    "@sfs/db": "workspace:*",
+    "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "@sfs/tsconfig": "workspace:*",
+    "typescript": "^5.7.3"
+  },
+  "exports": {
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    },
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}
