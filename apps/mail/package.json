@@ -1,0 +1,16 @@
+{
+  "name": "emailer",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types ../../packages/mail/worker-configuration.d.ts --env-interface CloudflareBindings && wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "hono": "^4.6.20"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "wrangler": "^3.107.3",
+    "@sfs/tsconfig": "workspace:*"
+  }
+}

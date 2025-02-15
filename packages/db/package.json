@@ -1,0 +1,31 @@
+{
+  "name": "@sfs/db",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "migrations:list": "wrangler d1 migrations list semantic-first-search-db --persist-to=../../.wrangler/state --local",
+    "migrations:apply": "wrangler d1 migrations apply semantic-first-search-db --persist-to=../../.wrangler/state --local",
+    "migrations:apply:remote": "wrangler d1 migrations apply semantic-first-search-db --remote"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.2",
+    "zod": "^3.24.1",
+    "@sfs/types": "workspace:*",
+    "@sfs/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4",
+    "wrangler": "^3.107.3",
+    "@sfs/tsconfig": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/schema/index.ts",
+      "default": "./dist/schema/index.js"
+    },
+    "./*": {
+      "types": "./src/schema/*.ts",
+      "default": "./dist/schema/*.js"
+    }
+  }
+}
