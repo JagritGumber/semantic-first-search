@@ -4,8 +4,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "@hono/auth-js/react";
-import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
-import { Link } from "wouter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
@@ -16,19 +14,21 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { createUserValidator, type CreateUserValidator } from "@sfs/validators";
+import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
+import { Link } from "wouter";
+import { signInUserValidator, type SignInUserValidator } from "@sfs/validators";
 
-export function SignUpForm({
+export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const form = useForm<CreateUserValidator>({
-    resolver: zodResolver(createUserValidator),
+  const form = useForm<SignInUserValidator>({
+    resolver: zodResolver(signInUserValidator),
   });
 
-  const onSubmit = async (values: CreateUserValidator) => {
-    console.log(values);
-  };
+  function onSubmit(values: SignInUserValidator) {
+    signIn("credentials", values);
+  }
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -42,12 +42,12 @@ export function SignUpForm({
           </a>
           <h1 className="text-xl font-bold">Welcome to SemSearch</h1>
           <div className="text-center text-sm">
-            Already have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
-              href="/auth/login"
+              href="/auth/signup"
               className="font-medium underline underline-offset-4"
             >
-              Log In
+              Sign up
             </Link>
           </div>
         </div>
@@ -56,18 +56,6 @@ export function SignUpForm({
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-6"
           >
-            <FormField
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="John Doe" {...field} type="text" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <FormField
               name="email"
               render={({ field }) => (
@@ -103,7 +91,7 @@ export function SignUpForm({
               )}
             />
             <Button type="submit" className="w-full">
-              Sign Up
+              Log in
             </Button>
           </form>
         </Form>
@@ -113,7 +101,11 @@ export function SignUpForm({
           </span>
         </div>
         <div className="grid gap-4 sm:grid-cols-1">
-          <Button variant="outline" className="w-full">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => signIn("google")}
+          >
             <GoogleLogo weight="bold" />
             Continue with Google
           </Button>

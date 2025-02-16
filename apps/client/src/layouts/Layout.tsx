@@ -1,14 +1,22 @@
+import RightSidebar from "@/components/core/RightSidebar";
 import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export function Layout({ children }: React.PropsWithChildren) {
   return (
-    <div className="flex flex-col justify-between w-full h-full min-h-screen">
-      <Header />
-      <main className="flex-auto w-full max-w-3xl px-4 py-4 mx-auto sm:px-6 md:py-6">
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "364px",
+          "--sidebar-width-icon": "96px",
+        } as React.CSSProperties
+      }
+    >
+      <SidebarInset>
+        <Header />
         {children}
-      </main>
-      <Footer />
-    </div>
+      </SidebarInset>
+      <RightSidebar />
+    </SidebarProvider>
   );
 }

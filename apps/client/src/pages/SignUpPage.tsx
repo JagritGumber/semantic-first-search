@@ -6,7 +6,7 @@ export const SignUpPage = () => {
   const { data: session } = useSession();
 
   if (session) {
-    return <Redirect href="/chat" replace={true} />;
+    return <Redirect href="/" replace={true} />;
   }
 
   return (

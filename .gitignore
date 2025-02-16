@@ -60,3 +60,4 @@ lerna-debug.log*
 # misc
 .DS_Store
 wrangler.json
+wrangler.toml
